@@ -1,6 +1,10 @@
 /** Typing Hero */
 
 /**
+ * https://youtu.be/U6XTjRpH398
+ */
+
+/**
  * As programmer, I've always
  * felt it didn't really matter
  * how fast I typed.
