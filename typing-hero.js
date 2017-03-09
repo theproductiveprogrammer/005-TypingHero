@@ -208,7 +208,7 @@ function new_game_level_up(oldgame) {
     return game;
 }
 
-/**
+/*
  * [=] Start the game at the
  * same level.
  * [ ] Make a copy of the
@@ -239,7 +239,7 @@ function random_uid() {
   return Math.floor(Math.random() * (100000 - 1000)) + 1000;
 }
 
-/**
+/*
  * [!] Return a random short
  * story
  * [+] STORIES contain all the
@@ -335,7 +335,7 @@ function starting_game_parameters_1(game) {
     }
 }
 
-/**
+/*
  * [=] Return a level harder
  * game parameters.
  * [ ] Now that the user has
@@ -643,10 +643,7 @@ function start_cute_msg_timer(game) {
 }
 
 /**
- * [=] The main update loop
- * [+] Update the game based on
- * it's current state and then
- * show it.
+ * [=] The update loop scheduler
  * [+] The update is queued out
  * of the current flow so it
  * gets called after the flow
