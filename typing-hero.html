@@ -1,0 +1,276 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Typing Hero: Save the Story!</title>
+
+    <!-- styling reset -->
+    <style>
+* { margin: 0; padding: 0; }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Trocchi|Special+Elite" rel="stylesheet">
+
+    <script src="lz-string.js"></script>
+    <script src="stories.js"></script>
+    <script src="typing-hero.js"></script>
+
+    <style>
+#th-bg {
+    width: 1025px;
+    min-height: 665px;
+    margin: 0 auto;
+}
+#th-main {
+    width: 512px;
+    margin: 0 auto;
+}
+#th-top {
+    visibility: hidden;
+    height: 32px;
+    width: 100%;
+}
+#th-middle {
+    height: 600px;
+    width: 100%;
+}
+#th-bottom {
+    visibility: hidden;
+    height: 64px;
+    margin: 0 auto;
+    background-color: #fadcef; /*pink;*/
+}
+#th-accuracy {
+    padding-top: 4px;
+    display: inline-block;
+    width: 49%;
+    height: 16px;
+}
+#th-wpm {
+    padding-top: 4px;
+    display: inline-block;
+    width: 49%;
+    height: 16px;
+    text-align: right;
+}
+#th-wpm-bar {
+    background-color: green;
+    border: 1px solid black;
+    margin-left: 25%;
+    width: 75%;
+}
+#th-wpm-progress {
+    background-color: white;
+    height: 16px;
+}
+
+#th-msg {
+    position: absolute;
+    top: 80px;
+    width: 512px;
+    height: 80px;
+    text-align: center;
+    font-family: 'Trocchi', serif;
+    font-size: 40px;
+    color: #e071b6;
+}
+#th-arena {
+    position: absolute;
+    background-repeat: no-repeat;
+    width: 512px;
+    height: 300px;
+    top: 264px;
+}
+#th-monster {
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+    top: -100px;
+    left: 60px;
+}
+#th-target, #th-indicator {
+    position: absolute;
+    top: -60px;
+    left: 120px;
+    font-family: 'Special Elite', cursive;
+    font-size: 72px;
+    white-space: pre;
+}
+.th-spacing {
+    visibility: hidden;
+    font-family: 'Special Elite', cursive;
+    font-size: 72px;
+    white-space: pre;
+}
+#th-indicator {
+    animation: blink 2s linear infinite alternate;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#th-left {
+    visibility: hidden;
+    position: absolute;
+    top: 120px;
+    width: 512px;
+    height: 16px;
+    background-color: #e071b6;
+}
+#th-user {
+    position: absolute;
+    top: 133px;
+    width: 510px;
+    height: 128px;
+    border: 1px solid #c2c2c2;
+    padding-top: 2px;
+}
+.th-extra {
+    color: red;
+}
+.th-matched {
+    color: #c2c2c2;
+}
+
+#th-overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    background-color: #333;
+    overflow: hidden;
+}
+#th-state-msg {
+    display: none;
+    position: fixed;
+}
+#th-tweet {
+    position: fixed;
+    background-color: white;
+    border-radius: 8px;
+}
+#th-tweet-title {
+    position: fixed;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #292f33
+}
+#th-tweet-btn {
+    position: fixed;
+}
+#th-tweet-txt {
+    position: fixed;
+    width: 290px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    color: #292f33
+}
+#th-msg-txt {
+    position: fixed;
+    font-family: 'Special Elite', cursive;
+    font-size: 32px;
+}
+#th-msg-btn {
+    position: fixed;
+    border-radius: 8px;
+    background-color: #e071b6;
+    -webkit-box-shadow: 1px 2px 2px 0px rgba(72,72,72,1);
+    -moz-box-shadow: 1px 2px 2px 0px rgba(72,72,72,1);
+    box-shadow: 1px 2px 2px 0px rgba(72,72,72,1);
+}
+#th-msg-btn-txt {
+    position: fixed;
+    font-family: 'Special Elite', cursive;
+    font-size: 14px;
+}
+#th-msg-btn-txt a {
+    cursor: pointer;
+    cursor: hand;
+    text-decoration: none;
+    color: black;
+}
+#th-story-so-far {
+    position: fixed;
+    width: 510px;
+    height: 64px;
+    border: 1px solid #c2c2c2;
+    overflow-y: scroll;
+    background-color: #dadada;
+    background-color: rgba(255, 255, 255, 0.82);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div id=th-bg>
+        <div id=th-main>
+            <div id=th-top>
+                <div id=th-accuracy><img src=th-light-blank.png><img src=th-light-blank.png><img src=th-light-blank.png><img src=th-light-blank.png><img src=th-light-blank.png><img src=th-light-blank.png><div>Accuracy</div></div>
+                <div id=th-wpm>
+                    <div id=th-wpm-bar><div id=th-wpm-progress></div></div>
+                    <div id=th-wpm-bar-label>WPM</div>
+                </div>
+            </div>
+
+            <div id=th-middle>
+                <div id=th-msg></div>
+                <div id=th-arena>
+                    <img id=th-monster src="th-monster.gif"></img>
+                    <div id=th-target></div>
+                    <div id=th-indicator></div>
+                    <div id=th-user></div>
+                    <div id=th-left></div>
+                </div>
+            </div>
+
+            <div id=th-bottom>
+            </div>
+        </div>
+    </div>
+    <div id=th-overlay>
+        <div id=th-state-msg>
+            <div id=th-tweet>
+                <div id=th-tweet-title></div>
+                <div id=th-tweet-btn></div>
+                <div id=th-tweet-txt></div>
+            </div>
+            <div id=th-msg-txt></div>
+            <div id=th-msg-btn>
+                <div id=th-msg-btn-txt></div>
+            </div>
+        </div>
+        <div id=th-story-so-far></div>
+    </div>
+    <!-- uncomment to debug
+    <div id=debug-story style="white-space:pre;"></div>
+    -->
+    <script>
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+    </script>
+</body>
+</html>
