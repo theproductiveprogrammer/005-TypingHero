@@ -2234,8 +2234,8 @@ function show_state_message_msg_1(state) {
     var l = (document.documentElement.clientWidth - sz_w)/2;
     /* adjust postion to just how we like it */
     t -= 64;
-    m.style.top = t;
-    m.style.left = l;
+    m.style.top = t + "px";
+    m.style.left = l + "px";
 }
 
 function hide_state_message_tweet_1() {
@@ -2255,8 +2255,8 @@ function show_state_message_tweet_1(game) {
     /* adjust postion to just how we like it */
     t -= 135;
     var m = document.getElementById('th-tweet');
-    m.style.top = t;
-    m.style.left = l;
+    m.style.top = t + "px";
+    m.style.left = l + "px";
     m.style.width = sz_w + "px";
     m.style.height = sz_h + "px";
 
@@ -2467,8 +2467,8 @@ function show_state_message_box_1() {
     var l = (document.documentElement.clientWidth - sz_w)/2;
 
     var m = document.getElementById('th-state-msg');
-    m.style.top = t;
-    m.style.left = l;
+    m.style.top = t + "px";
+    m.style.left = l + "px";
     m.style.width = sz_w + "px";
     m.style.height = sz_h + "px";
     m.style.backgroundImage = "url(\"state-msg.png\")";
