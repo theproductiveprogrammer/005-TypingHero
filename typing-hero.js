@@ -1538,12 +1538,19 @@ function install_kb_handler(game, handler) {
      * we need the space to type
      * we disable this
      * behaviour.
+     * [= -] The 'Backspace' and
+     * "'" keys also have
+     * special meaning in
+     * Firefox so we disable
+     * that too.
      */
     var keyhandler = function(e) {
         var k = to_key(e);
         if(k) {
             handler(game, k);
             if(k == " ") e.preventDefault();
+            if(k == "BACKSPACE") e.preventDefault();
+            if(k == "'") e.preventDefault();
         }
     };
 
