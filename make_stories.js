@@ -1,6 +1,7 @@
 var compresser = require("./lz-string.js");
 
 var UNCOMPRESSED_STORIES= [
+    "You finally sneak into the dragon's cave and find his treasure chest. Breathless with excitement, you open it and there is just a macaroni drawing by the dragon's son. \"IT'S TREASURE TO MEEEE!\" the dragon bellows",
     "Just go for it and give it a try! You don't have to be a professional to build a successful product. Amateurs started Google and Apple. Professionals built the Titanic",
     "Today, at my mother's funeral, her best friend of 40 years came up to me and asked me how I knew the deceased",
     "Traveling in Kenya, I met a refugee from Zimbabwe. He said he hadn't eaten anything in over 3 days and looked extremely skinny and unhealthy. I reached in my bag and offered him my sandwich. The first thing he said was, \"We can share it.\"",
